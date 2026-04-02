@@ -1,0 +1,46 @@
+@use './vars' as v;
+@use 'sass:color';
+
+html, body{
+	scroll-behavior:unset;
+}
+
+.center-align{
+	text-align: center;
+}
+
+.bttn{
+	display: inline-flex;
+	gap: .5em;
+	align-items: center;
+	padding: .4em 1.25em;
+	border-radius: 2em;
+	text-decoration: none;
+	background-color: v.$accent;
+	border: 1px solid v.$accent;
+	transition: background-color .2s, color .2s, box-shadow .2s, border-color .2s;
+	color: #fff;
+
+	& .icon{
+		font-size: 1.8em;
+	}
+
+	&:hover{
+		background-color: color.adjust(v.$accent, $lightness: 15%, $saturation: 20%);
+		border-color: color.adjust(v.$accent, $lightness: 15%, $saturation: 20%);
+	}
+
+	&-outlined{
+		@extend .bttn;
+		background-color: transparent;
+		color: v.$accent;
+
+		&:hover{
+			background-color: rgba(black, .05);
+		}
+	}
+}
+
+.fogged{
+	color: v.$fogged;
+}

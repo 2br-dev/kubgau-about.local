@@ -1,0 +1,22 @@
+<section id="faq">
+	<div class="container">
+		<div class="row flex">
+			<div class="col l3 m5 left-wrapper">
+				<hgroup>
+					<h2>Вопросы и ответы</h2>
+				</hgroup>
+				<div class="bottom">
+					<hr>
+					<span class="fogged">Часто задаваемые вопросы и ответы на них</span>
+				</div>
+			</div>
+			<div class="col l7 offset-l2 m7">
+				<div class="l8 m12">
+					<div class="answers">
+						@@loop('../answer.html', '../html/data/questions.json')
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

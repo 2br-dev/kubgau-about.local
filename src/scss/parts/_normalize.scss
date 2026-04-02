@@ -1,0 +1,35 @@
+body {
+	margin: 0;
+	interpolate-size: allow-keywords; // Для Chrome 129+
+
+	& img{
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+details {
+	
+	// Псевдоэлемент, отвечающий за всё содержимое под summary
+	&::details-content {
+		height: 0;
+		overflow: hidden;
+		opacity: 0;
+		/* transition-behavior: allow-discrete позволяет анимировать 
+       переключение видимости контента */
+		transition:
+			height 0.4s ease,
+			opacity 0.4s ease,
+			content-visibility 1s allow-discrete;
+	}
+
+	&[open]::details-content {
+		height: auto;
+		opacity: 1;
+	}
+
+	// Дополнительно: чтобы Grid внутри не ломал анимацию,
+	// убираем display: grid с самого details, если он там был
+	display: block;
+}

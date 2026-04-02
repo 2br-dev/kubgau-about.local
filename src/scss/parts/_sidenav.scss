@@ -1,0 +1,220 @@
+@use "./vars" as v;
+@use "sass:math";
+
+.sidenav {
+	position: fixed;
+	width: v.$sidenav-width;
+	left: 0;
+	top: 0;
+	margin: 0;
+	transform: translateX(-100%);
+	height: 100%;
+	height: calc(100% + 60px);
+	height: -moz-calc(100%); //Temporary Firefox Fix
+	padding-bottom: 60px;
+	background-color: v.$sidenav-bg-color;
+	z-index: 999;
+	overflow-y: auto;
+	will-change: transform;
+	backface-visibility: hidden;
+	transform: translateX(-105%);
+	padding-left: 0;
+
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+		0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+	// Right Align
+	&.right-aligned {
+		right: 0;
+		transform: translateX(105%);
+		left: auto;
+		transform: translateX(100%);
+	}
+
+	.collapsible {
+		margin: 0;
+	}
+
+	li {
+		float: none;
+		line-height: v.$sidenav-line-height;
+		list-style: none;
+
+		&.active {
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+	}
+
+	li > a,
+	li > span {
+		color: v.$sidenav-font-color;
+		display: block;
+		font-size: v.$sidenav-font-size;
+		font-weight: 500;
+		height: v.$sidenav-item-height;
+		line-height: v.$sidenav-line-height;
+		padding: 0 (v.$sidenav-padding * 2);
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+
+		&.btn,
+		&.btn-large,
+		&.btn-flat,
+		&.btn-floating {
+			margin: 10px 15px;
+		}
+
+		& > i,
+		& > [class^="mdi-"],
+		li > a > [class*="mdi-"],
+		& > i.material-icons {
+			float: left;
+			height: v.$sidenav-item-height;
+			line-height: v.$sidenav-line-height;
+			margin: 0 (v.$sidenav-padding * 2) 0 0;
+			width: math.div(v.$sidenav-item-height, 2);
+			color: rgba(0, 0, 0, 0.54);
+		}
+	}
+
+	.divider {
+		margin: math.div(v.$sidenav-padding, 2) 0 0 0;
+	}
+
+	.subheader {
+		&:hover {
+			background-color: transparent;
+		}
+
+		cursor: initial;
+		pointer-events: none;
+		color: rgba(0, 0, 0, 0.54);
+		font-size: v.$sidenav-font-size;
+		font-weight: 500;
+		line-height: v.$sidenav-line-height;
+	}
+
+	.user-view {
+		position: relative;
+		padding: (v.$sidenav-padding * 2) (v.$sidenav-padding * 2) 0;
+		margin-bottom: math.div(v.$sidenav-padding, 2);
+
+		& > a {
+			&:hover {
+				background-color: transparent;
+			}
+			height: auto;
+			padding: 0;
+		}
+
+		.background {
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+		}
+
+		.circle,
+		.name,
+		.email {
+			display: block;
+		}
+
+		.circle {
+			height: 64px;
+			width: 64px;
+		}
+
+		.name,
+		.email {
+			font-size: v.$sidenav-font-size;
+			line-height: math.div(v.$sidenav-line-height, 2);
+		}
+
+		.name {
+			margin-top: 16px;
+			font-weight: 500;
+		}
+
+		.email {
+			padding-bottom: 16px;
+			font-weight: 400;
+		}
+	}
+}
+
+// Touch interaction
+.drag-target {
+	// Right Align
+	&.right-aligned {
+		right: 0;
+	}
+
+	height: 100%;
+	width: 10px;
+	position: fixed;
+	top: 0;
+	z-index: 998;
+}
+
+// Fixed Sidenav shown
+.sidenav.sidenav-fixed {
+	// Right Align
+	&.right-aligned {
+		right: 0;
+		left: auto;
+	}
+
+	left: 0;
+	transform: translateX(0);
+	position: fixed;
+}
+
+// Fixed Sidenav hide on smaller
+@media (max-width: v.$medium) {
+	.sidenav {
+		&.sidenav-fixed {
+			transform: translateX(-105%);
+
+			&.right-aligned {
+				transform: translateX(105%);
+			}
+		}
+
+		> a {
+			padding: 0 v.$sidenav-padding;
+		}
+
+		.user-view {
+			padding: v.$sidenav-padding v.$sidenav-padding 0;
+		}
+	}
+}
+
+.sidenav .collapsible-body > ul:not(.collapsible) > li.active,
+.sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
+	background-color: v.$primary;
+	a {
+		color: v.$sidenav-bg-color;
+	}
+}
+.sidenav .collapsible-body {
+	padding: 0;
+}
+
+.sidenav-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	height: 120vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 997;
+	display: none;
+}

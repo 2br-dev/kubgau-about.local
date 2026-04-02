@@ -1,0 +1,22 @@
+<section id="campus">
+	<div class="container">
+		<div class="row flex">
+			<div class="col xl4 l5 s12 order-m1">
+				<div class="campus-text">
+					<hgroup>
+						<h2>Кампус — целый мир!</h2>
+						<p>На единой территории образование, наука, творчество, спорт и комфортная жизнь! </p>
+					</hgroup>
+					<div class="points-wrapper">
+						@@loop('../campus-point.html', '../html/data/campus-points.json')
+					</div>
+				</div>
+			</div>
+			<div class="col xl6 offset-xl2 l6 offset-l1 s12">
+				<div class="img-wrapper">
+					<img src="./tulip-2026/img/campus.webp" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

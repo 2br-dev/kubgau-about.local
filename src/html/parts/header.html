@@ -1,0 +1,16 @@
+<header>
+	<nav class="container">
+		<div class="logo-wrapper">
+			<a href="#top"><img src="./tulip-2026/img/logo.svg" alt="Наверх"></a>
+			<a href="https://kubsau.ru" class="bttn-outlined">На основной сайт</a>
+		</div>
+		<ul>
+			@@include('./navigation.html')
+			<li><a href="https://max.ru/kubsau" target="_blank" class="accent"><i class="icon i-max"></i></a></li>
+			<li><a class="sidenav-trigger" href="#mobile"><i class="icon i-menu"></i></a></li>
+		</ul>
+	</nav>
+</header>
+<ul class="sidenav" id="mobile">
+	@@include('./navigation.html')
+</ul>
