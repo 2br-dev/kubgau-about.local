@@ -2,13 +2,13 @@ import Hogan from 'hogan.js';
 import FacultiesExplorer, { IFaculties } from './lib/faculties';
 import M from 'materialize-css';
 import Swiper from 'swiper';
-import {Autoplay, Pagination} from 'swiper/modules';
+import {Autoplay, Pagination, Navigation} from 'swiper/modules';
 
 let facultyData: IFaculties;
 let explorer: FacultiesExplorer;
 let selectedForm:string;
 
-Swiper.use([Pagination, Autoplay]);
+Swiper.use([Pagination, Navigation, Autoplay]);
 
 const facultyTpl = `
 {{#faculties}}
@@ -75,9 +75,27 @@ document.addEventListener('DOMContentLoaded', () => {
 		point.addEventListener('click', openPoint);
 	})
 
+	// Открытие модалок с описанием точек на карте
 	document.querySelectorAll('#map dd a').forEach((closer:Element) => {
 		closer.addEventListener('click', closePoint);
 	})
+
+	// Слайдер сетевых програм
+
+	const netSlider = document.querySelectorAll('#net-slider').length ?
+	new Swiper(document.querySelector('#net-slider') as HTMLElement, {
+		speed: 800,
+		spaceBetween: 20,
+		pagination: {
+			el: '#network-pagination',
+			type: 'bullets',
+			clickable: true
+		},
+		navigation: {
+			nextEl: '.net-next',
+			prevEl: '.net-prev'
+		},
+	}): null;
 
 	const dpoSwiperEl = document.querySelector('#swiper-dpo') as HTMLElement;
 	if(dpoSwiperEl){
