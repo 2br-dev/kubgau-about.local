@@ -47,14 +47,7 @@ section{
 					color: #fff !important;
 					text-align: center;
 				}
-
-				@media(max-width: 850px){
-					& p{
-						display: none;
-					}
-				}
 				
-
 				& ul{
 					margin: 0;
 					padding: 0;
@@ -931,6 +924,10 @@ section{
 					}
 				}
 			}
+		}
+
+		& .more{
+			margin-top: 2rem;
 		}
 	}
 

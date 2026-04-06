@@ -63,11 +63,13 @@ header{
 						color: v.$accent;
 						font-size: 24px;
 						display: flex;
+						padding: 0 .45em;
 					}
 					
 					&.sidenav-trigger{
 						font-size: 24px;
 						display: flex;
+						padding: 0 .45em;
 
 						@media(min-width: 1300px){
 							display: none;

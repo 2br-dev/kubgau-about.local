@@ -74,4 +74,14 @@ footer{
 			}
 		}
 	}
+
+	@media(max-width: 450px){
+
+		& .bttn, & .bttn-outlined{
+			width: 100%;
+			max-width: 150px;
+			align-items: center;
+			justify-content: center;
+		}
+	}
 }

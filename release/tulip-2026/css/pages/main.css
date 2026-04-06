@@ -84,12 +84,6 @@ section#hero .container hgroup p {
     text-align: center;
 }
 
-@media (max-width: 850px) {
-    section#hero .container hgroup p {
-        display: none;
-    }
-}
-
 section#hero .container hgroup ul {
     margin: 0;
     padding: 0;
@@ -904,6 +898,10 @@ section#dpo #dpo-pagination .swiper-pagination-bullet {
 
 section#dpo #dpo-pagination .swiper-pagination-bullet-active {
     background-color: #fff;
+}
+
+section#dpo .more {
+    margin-top: 2rem;
 }
 
 section#job .fogged {

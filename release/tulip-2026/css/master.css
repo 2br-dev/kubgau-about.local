@@ -2827,11 +2827,13 @@ header .container ul li a.accent {
     color: #FF8001;
     font-size: 24px;
     display: flex;
+    padding: 0 0.45em;
 }
 
 header .container ul li a.sidenav-trigger {
     font-size: 24px;
     display: flex;
+    padding: 0 0.45em;
 }
 
 @media (min-width: 1300px) {
@@ -2927,4 +2929,13 @@ footer .credits .icon {
 
 footer .credits .icon:before {
     width: 3em;
+}
+
+@media (max-width: 450px) {
+    footer .bttn, footer .bttn-outlined {
+        width: 100%;
+        max-width: 150px;
+        align-items: center;
+        justify-content: center;
+    }
 }
